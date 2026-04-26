@@ -1,87 +1,52 @@
+<!-- Main HTML file for CrisisAid Route Planner -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CrisisAid Route Planner</title>
-  <link rel="stylesheet" href="src/style.css" />
+
+  <!-- Link to CSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>CrisisAid Route Planner</h1>
-    <p>An algorithm-centered humanitarian response demo for choosing safer supply delivery routes during conflict or post-conflict emergencies.</p>
-  </header>
 
-  <main>
-    <section class="card">
-      <h2>Scenario</h2>
-      <p>
-        A relief team needs to send supplies from a supply center to a shelter. Roads have different distances and danger levels.
-        The app uses a modified Dijkstra algorithm to recommend the lowest-cost path.
-      </p>
-    </section>
+  <!-- Title of the application -->
+  <h1>CrisisAid Route Planner</h1>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Choose Route</h2>
-        <label for="start">Start Location</label>
-        <select id="start"></select>
+  <div class="container">
 
-        <label for="end">Destination</label>
-        <select id="end"></select>
+    <h2>Find Best Route</h2>
 
-        <label for="riskWeight">Risk Importance</label>
-        <input id="riskWeight" type="range" min="1" max="10" value="5" />
-        <p class="small">Higher value means the algorithm avoids dangerous roads more strongly.</p>
+    <!-- Dropdown to select starting location -->
+    <label>Start Location:</label>
+    <select id="start">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
 
-        <button onclick="calculateRoute()">Find Best Route</button>
-        <button class="secondary" onclick="loadDefaultData()">Reset Default Data</button>
-      </div>
+    <br><br>
 
-      <div class="card result-card">
-        <h2>Recommended Result</h2>
-        <div id="result">Click “Find Best Route” to begin.</div>
-      </div>
-    </section>
+    <!-- Dropdown to select ending location -->
+    <label>End Location:</label>
+    <select id="end">
+      <option value="D">D</option>
+      <option value="C">C</option>
+      <option value="B">B</option>
+    </select>
 
-    <section class="card">
-      <h2>Road Network</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Distance</th>
-            <th>Risk Level</th>
-            <th>Algorithm Cost</th>
-          </tr>
-        </thead>
-        <tbody id="roadTable"></tbody>
-      </table>
-    </section>
+    <br><br>
 
-    <section class="card">
-      <h2>Add a Road</h2>
-      <div class="form-row">
-        <input id="from" placeholder="From location" />
-        <input id="to" placeholder="To location" />
-        <input id="distance" type="number" placeholder="Distance" min="1" />
-        <input id="risk" type="number" placeholder="Risk 1-10" min="1" max="10" />
-        <button onclick="addRoad()">Add Road</button>
-      </div>
-      <p class="small">Example: Supply Center → Clinic, distance 4, risk 2.</p>
-    </section>
+    <!-- Button triggers JavaScript function -->
+    <button onclick="findRoute()">Find Best Route</button>
 
-    <section class="card">
-      <h2>Simple Map Visualization</h2>
-      <div id="map"></div>
-    </section>
-  </main>
+    <!-- This will display the result -->
+    <h3 id="result">Result will appear here</h3>
 
-  <footer>
-    <p>Course Capstone Project | Algorithm Used: Modified Dijkstra's Algorithm</p>
-  </footer>
+  </div>
 
-  <script src="src/app.js"></script>
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
+
 </body>
 </html>
