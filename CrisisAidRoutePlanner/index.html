@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrisisAid Route Planner</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CrisisAid Route Planner</h1>
+    <p>An algorithm-centered humanitarian response demo for choosing safer supply delivery routes during conflict or post-conflict emergencies.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Scenario</h2>
+      <p>
+        A relief team needs to send supplies from a supply center to a shelter. Roads have different distances and danger levels.
+        The app uses a modified Dijkstra algorithm to recommend the lowest-cost path.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Choose Route</h2>
+        <label for="start">Start Location</label>
+        <select id="start"></select>
+
+        <label for="end">Destination</label>
+        <select id="end"></select>
+
+        <label for="riskWeight">Risk Importance</label>
+        <input id="riskWeight" type="range" min="1" max="10" value="5" />
+        <p class="small">Higher value means the algorithm avoids dangerous roads more strongly.</p>
+
+        <button onclick="calculateRoute()">Find Best Route</button>
+        <button class="secondary" onclick="loadDefaultData()">Reset Default Data</button>
+      </div>
+
+      <div class="card result-card">
+        <h2>Recommended Result</h2>
+        <div id="result">Click “Find Best Route” to begin.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Road Network</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Distance</th>
+            <th>Risk Level</th>
+            <th>Algorithm Cost</th>
+          </tr>
+        </thead>
+        <tbody id="roadTable"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Add a Road</h2>
+      <div class="form-row">
+        <input id="from" placeholder="From location" />
+        <input id="to" placeholder="To location" />
+        <input id="distance" type="number" placeholder="Distance" min="1" />
+        <input id="risk" type="number" placeholder="Risk 1-10" min="1" max="10" />
+        <button onclick="addRoad()">Add Road</button>
+      </div>
+      <p class="small">Example: Supply Center → Clinic, distance 4, risk 2.</p>
+    </section>
+
+    <section class="card">
+      <h2>Simple Map Visualization</h2>
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Course Capstone Project | Algorithm Used: Modified Dijkstra's Algorithm</p>
+  </footer>
+
+  <script src="src/app.js"></script>
+</body>
+</html>
